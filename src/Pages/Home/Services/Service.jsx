@@ -20,7 +20,7 @@ const Service = ({ service }) => {
 };
 
 Service.propTypes = {
-    service: PropTypes.obj
+    service: PropTypes.object
 };
 
 export default Service;
