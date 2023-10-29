@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import login from '../../assets/images/login/login.svg'
 
-const Login = () => {
-    const handleLogIn = e => {
+const SignUp = () => {
+    const handleSignUp = e => {
         e.preventDefault()
         console.log("clicked");
     }
@@ -13,8 +13,14 @@ const Login = () => {
                     <img className='w-full' src={login} alt="" />
                 </div>
                 <div className="card lg:w-1/2 w-full shadow-2xl bg-base-100">
-                    <h1 className="text-5xl font-bold text-center pt-3">Login now!</h1>
-                    <form onSubmit={handleLogIn} className="card-body">
+                    <h1 className="text-5xl font-bold text-center pt-3">SignUp now!</h1>
+                    <form onSubmit={handleSignUp} className="card-body">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" name='name' placeholder="name" className="input input-bordered" required />
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -26,19 +32,19 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-                            <label className="label">
+                            {/* <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            </label> */}
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">SignUp</button>
                         </div>
                     </form>
-                    <p className='text-center py-3'>New to Car Doctor? <Link className='text-red-500' to='/signup'>Sign Up</Link></p>
+                    <p className='text-center py-3'>Have an Account? <Link className='text-red-500' to='/login'>Sign In</Link></p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default SignUp;
