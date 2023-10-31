@@ -1,15 +1,15 @@
 
 import PropTypes from 'prop-types';
 
-const BookingItems = ({ booking }) => {
-    const { service, customerName, email, img, date } = booking;
-    console.log(booking);
+const BookingItems = ({ booking, handleDelete }) => {
+    const { _id, service, customerName, email, img, date } = booking;
+
     return (
         <tr>
             <th>
-                <label>
-                    <input type="checkbox" className="checkbox" />
-                </label>
+                <button onClick={() => handleDelete(_id)} className="btn btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
             </th>
             <td>
                 <div className="flex items-center space-x-3">
@@ -34,7 +34,8 @@ const BookingItems = ({ booking }) => {
 };
 
 BookingItems.propTypes = {
-    booking: PropTypes.object
+    booking: PropTypes.object,
+    handleDelete: PropTypes.func
 };
 
 export default BookingItems;

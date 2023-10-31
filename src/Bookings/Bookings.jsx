@@ -14,6 +14,24 @@ const Bookings = () => {
                 setBookings(data);
             })
     }, [url])
+
+    const handleDelete = id => {
+        const proced = confirm('Are you sure want to delete?')
+        if (proced) {
+            fetch(`http://localhost:5000/bookings/${id}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        alert('yes,deleted one items')
+                        const remaining = bookings.filter(booking => booking._id !== id)
+                        setBookings(remaining)
+                    }
+                })
+        }
+    }
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -37,6 +55,7 @@ const Bookings = () => {
                         bookings.map(booking => <BookingItems
                             key={booking._id}
                             booking={booking}
+                            handleDelete={handleDelete}
                         ></BookingItems>)
                     }
                 </tbody>
