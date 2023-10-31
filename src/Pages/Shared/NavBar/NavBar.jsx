@@ -18,7 +18,10 @@ const NavBar = () => {
         <li><Link to='/services'>Services</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
-        {user?.email ? <li onClick={handleLogOut}><button>LogOut</button></li>
+        {user?.email ? <>
+            <li><Link to='/booking'>My Booking</Link></li>
+            <li onClick={handleLogOut}><button>LogOut</button></li>
+        </>
             : <li><Link to='/login'>LogIn</Link></li>
         }
     </>
