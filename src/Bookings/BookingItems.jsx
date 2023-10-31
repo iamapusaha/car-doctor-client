@@ -1,8 +1,8 @@
 
 import PropTypes from 'prop-types';
 
-const BookingItems = ({ booking, handleDelete }) => {
-    const { _id, service, customerName, email, img, date } = booking;
+const BookingItems = ({ booking, handleDelete, handleConfirmed }) => {
+    const { _id, service, customerName, email, img, date, status } = booking;
 
     return (
         <tr>
@@ -27,7 +27,10 @@ const BookingItems = ({ booking, handleDelete }) => {
             <td>{email}</td>
             <td>{date}</td>
             <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                {status === "confirm" ? <h1 className='text-primary font-bold'>confirmed</h1>
+                    :
+                    <button onClick={() => handleConfirmed(_id)} className="btn btn-ghost btn-xs">confirm</button>
+                }
             </th>
         </tr>
     );
@@ -35,7 +38,8 @@ const BookingItems = ({ booking, handleDelete }) => {
 
 BookingItems.propTypes = {
     booking: PropTypes.object,
-    handleDelete: PropTypes.func
+    handleDelete: PropTypes.func,
+    handleConfirmed: PropTypes.func,
 };
 
 export default BookingItems;
