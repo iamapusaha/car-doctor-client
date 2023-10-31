@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
+import BookingItems from "./BookingItems";
 
 
 const Bookings = () => {
@@ -14,8 +15,34 @@ const Bookings = () => {
             })
     }, [url])
     return (
-        <div>
-            <h1>Total number of Booking{bookings.length}</h1>
+        <div className="overflow-x-auto">
+            <table className="table">
+                {/* head */}
+                <thead>
+                    <tr>
+                        <th>
+                            <label>
+                                <input type="checkbox" className="checkbox" />
+                            </label>
+                        </th>
+                        <th>Service Name</th>
+                        <th>Customer Name</th>
+                        <th>email</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {
+                        bookings.map(booking => <BookingItems
+                            key={booking._id}
+                            booking={booking}
+                        ></BookingItems>)
+                    }
+                </tbody>
+
+
+            </table>
         </div>
     );
 };
